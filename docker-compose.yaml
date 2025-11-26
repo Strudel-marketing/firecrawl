@@ -132,7 +132,7 @@ services:
       - traefik.http.routers.firecrawl-mcp.entrypoints=https
       - traefik.http.routers.firecrawl-mcp.tls.certresolver=letsencrypt
       - traefik.http.routers.firecrawl-mcp.service=firecrawl-mcp-service
-      - traefik.http.services.firecrawl-mcp-service.loadbalancer.server.port=3000
+      - traefik.http.services.firecrawl-mcp-service.loadbalancer.server.port=3002
 networks:
   backend:
     driver: bridge
