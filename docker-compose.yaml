@@ -55,13 +55,14 @@ services:
     ports:
       - '${PORT}:${PORT}'
     labels:
-      - traefik.enable=true
-      - traefik.docker.network=coolify
-      - 'traefik.http.routers.firecrawl.rule=Host(`firecrawl.strudel.marketing`)'
-      - traefik.http.routers.firecrawl.entrypoints=https
-      - traefik.http.routers.firecrawl.tls.certresolver=letsencrypt
-      - traefik.http.routers.firecrawl.service=firecrawl-service
-      - traefik.http.services.firecrawl-service.loadbalancer.server.port=3002
+      traefik.enable: "true"
+      traefik.docker.network: "coolify"
+      traefik.http.routers.firecrawl.rule: "Host(`firecrawl.strudel.marketing`)"
+      traefik.http.routers.firecrawl.entrypoints: "https"
+      traefik.http.routers.firecrawl.tls: "true"
+      traefik.http.routers.firecrawl.tls.certresolver: "letsencrypt"
+      traefik.http.routers.firecrawl.service: "firecrawl-service"
+      traefik.http.services.firecrawl-service.loadbalancer.server.port: "3002"
     command: 'node dist/src/harness.js --start-docker'
   firecrawl-redis:
     image: 'redis:alpine'
@@ -126,13 +127,14 @@ services:
       - coolify
     restart: unless-stopped
     labels:
-      - traefik.enable=true
-      - traefik.docker.network=coolify
-      - 'traefik.http.routers.firecrawl-mcp.rule=Host(`mcp.firecrawl.strudel.marketing`)'
-      - traefik.http.routers.firecrawl-mcp.entrypoints=https
-      - traefik.http.routers.firecrawl-mcp.tls.certresolver=letsencrypt
-      - traefik.http.routers.firecrawl-mcp.service=firecrawl-mcp-service
-      - traefik.http.services.firecrawl-mcp-service.loadbalancer.server.port=3002
+      traefik.enable: "true"
+      traefik.docker.network: "coolify"
+      traefik.http.routers.firecrawl-mcp.rule: "Host(`mcp.firecrawl.strudel.marketing`)"
+      traefik.http.routers.firecrawl-mcp.entrypoints: "https"
+      traefik.http.routers.firecrawl-mcp.tls: "true"
+      traefik.http.routers.firecrawl-mcp.tls.certresolver: "letsencrypt"
+      traefik.http.routers.firecrawl-mcp.service: "firecrawl-mcp-service"
+      traefik.http.services.firecrawl-mcp-service.loadbalancer.server.port: "3002"
 networks:
   backend:
     driver: bridge
