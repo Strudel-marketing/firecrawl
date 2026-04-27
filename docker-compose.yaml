@@ -56,6 +56,8 @@ services:
       - '${PORT}:${PORT}'
     labels: []
     command: 'node dist/src/harness.js --start-docker'
+    tmpfs:
+      - /tmp:size=2G,mode=1777
   firecrawl-redis:
     image: 'redis:alpine'
     container_name: firecrawl-redis
